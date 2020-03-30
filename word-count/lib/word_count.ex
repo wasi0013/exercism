@@ -10,8 +10,7 @@ defmodule WordCount do
             |> String.downcase 
             |> String.replace(~r/[_]/u, " ")
             |> String.replace(~r/[:$,!&@%^]/u, "")
-            |> String.split() 
-            |> Enum.filter(&(&1!="")) 
+            |> String.split(" ", trim: true) 
     keys =  words |> MapSet.new
     Map.new(keys, fn word -> {word, Enum.count(words, &(&1==word))}end)
   end
