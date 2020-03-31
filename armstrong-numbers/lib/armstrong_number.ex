@@ -5,5 +5,7 @@ defmodule ArmstrongNumber do
 
   @spec valid?(integer) :: boolean
   def valid?(number) do
+    l = length(Integer.digits(number))
+    Enum.sum(Enum.map(Integer.digits(number), &:math.pow(&1, l))) == number
   end
 end
