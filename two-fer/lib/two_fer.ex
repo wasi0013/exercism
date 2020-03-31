@@ -6,6 +6,7 @@ defmodule TwoFer do
   def two_fer(name) when is_bitstring(name) do
     "One for #{name}, one for me"
   end
+
   def two_fer() do
     "One for you, one for me"
   end
