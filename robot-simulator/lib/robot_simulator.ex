@@ -23,7 +23,7 @@ defmodule RobotSimulator do
   end
 
   defp invalid?({x, y}), do: (is_integer(x) and is_integer(y) == true) == false
-  defp invalid?(_), do:  true
+  defp invalid?(_), do: true
 
   @doc """
   Simulate the robot's movement given a string of instructions.
