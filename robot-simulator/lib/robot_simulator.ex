@@ -11,7 +11,7 @@ defmodule RobotSimulator do
       Enum.member?(@valid_directions, direction) == false ->
         {:error, "invalid direction"}
 
-      not_valid?(position) ->
+      invalid?(position) ->
         {:error, "invalid position"}
 
       true ->
@@ -22,13 +22,8 @@ defmodule RobotSimulator do
     end
   end
 
-  def not_valid?({x, y}) do
-    (is_integer(x) and is_integer(y) == true) == false
-  end
-
-  def not_valid?(_) do
-    true
-  end
+  defp invalid?({x, y}), do: (is_integer(x) and is_integer(y) == true) == false
+  defp invalid?(_), do:  true
 
   @doc """
   Simulate the robot's movement given a string of instructions.
@@ -74,7 +69,7 @@ defmodule RobotSimulator do
     robot
   end
 
-  def simulate(robot, _) do
+  def simulate(_, _) do
     {:error, "invalid instruction"}
   end
 
