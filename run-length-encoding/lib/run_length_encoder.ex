@@ -26,7 +26,7 @@ defmodule RunLengthEncoder do
   def decode(string) do
     Regex.scan(~r/(\d+)(.)/, string)
     |> Enum.reduce(string, fn [matched, number, str], acc ->
-        String.replace(acc, matched, String.duplicate(str, String.to_integer(number)), global: false)
-    end )
+      String.replace(acc, matched, String.duplicate(str, String.to_integer(number)), global: false)
+    end)
   end
 end
