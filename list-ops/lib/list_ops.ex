@@ -5,34 +5,33 @@ defmodule ListOps do
   # for adding numbers), but please do not use Kernel functions for Lists like
   # `++`, `--`, `hd`, `tl`, `in`, and `length`.
 
-  @spec count(list) :: non_neg_integer
-  def count(l) do
-  end
+  @spec count(list, non_neg_integer) :: non_neg_integer
+  def count([], acc), do: acc
+  def count([head | tail], acc \\ 0), do: count(tail, acc + 1)   
 
   @spec reverse(list) :: list
-  def reverse(l) do
-  end
+  def reverse([], acc), do: acc
+  def reverse([head | tail], acc \\ []), do: reverse(tail,  [head | acc])
 
   @spec map(list, (any -> any)) :: list
-  def map(l, f) do
-  end
+  def map([], _f), do: []
+  def map([head | tail], f), do: [f.(head) | map(tail, f)]
 
   @spec filter(list, (any -> as_boolean(term))) :: list
-  def filter(l, f) do
-  end
+  def filter([], _f), do: []
+  def filter([head | tail], f), do: if f.(head), do: [head | filter(tail, f)], else: filter(tail, f)
 
   @type acc :: any
   @spec reduce(list, acc, (any, acc -> acc)) :: acc
-  def reduce(l, acc, f) do
-  end
+  def reduce([], acc, _f), do: acc
+  def reduce([head | tail], acc, f), do: reduce(tail, f.(head, acc), f)
 
   @spec append(list, list) :: list
-  def append(a, b) do
-  end
+  def append(a, []), do: a
+  def append([], [head | tail]), do: append([head], tail)
+  def append([head | tail], b), do: [head | append(tail, b)]
 
   @spec concat([[any]]) :: [any]
-  def concat([]), do: []
-  def concat(list) do
-   list
-  end
+  def concat(list), do: list |> reduce([], &reduce(&1, &2, fn hd, tl -> [hd | tl] end)) |> reverse 
+
 end
