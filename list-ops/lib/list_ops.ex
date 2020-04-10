@@ -7,11 +7,11 @@ defmodule ListOps do
 
   @spec count(list, non_neg_integer) :: non_neg_integer
   def count([], acc), do: acc
-  def count([head | tail], acc \\ 0), do: count(tail, acc + 1)   
+  def count([head | tail], acc \\ 0), do: count(tail, acc + 1)
 
   @spec reverse(list) :: list
   def reverse([], acc), do: acc
-  def reverse([head | tail], acc \\ []), do: reverse(tail,  [head | acc])
+  def reverse([head | tail], acc \\ []), do: reverse(tail, [head | acc])
 
   @spec map(list, (any -> any)) :: list
   def map([], _f), do: []
@@ -19,7 +19,9 @@ defmodule ListOps do
 
   @spec filter(list, (any -> as_boolean(term))) :: list
   def filter([], _f), do: []
-  def filter([head | tail], f), do: if f.(head), do: [head | filter(tail, f)], else: filter(tail, f)
+
+  def filter([head | tail], f),
+    do: if(f.(head), do: [head | filter(tail, f)], else: filter(tail, f))
 
   @type acc :: any
   @spec reduce(list, acc, (any, acc -> acc)) :: acc
@@ -32,6 +34,5 @@ defmodule ListOps do
   def append([head | tail], b), do: [head | append(tail, b)]
 
   @spec concat([[any]]) :: [any]
-  def concat(list), do: list |> reduce([], &reduce(&1, &2, fn hd, tl -> [hd | tl] end)) |> reverse 
-
+  def concat(list), do: list |> reduce([], &reduce(&1, &2, fn hd, tl -> [hd | tl] end)) |> reverse
 end
