@@ -1,25 +1,19 @@
 defmodule Matrix do
-  defstruct columns: [], rows: []
+  defstruct rows: []
 
   @doc """
   Convert an `input` string, with rows separated by newlines and values
   separated by single spaces, into a `Matrix` struct.
   """
   @spec from_string(input :: String.t()) :: %Matrix{}
-  def from_string(input) do
-    rows =
-      Enum.map(
-        String.split(input, "\n"),
-        &Enum.map(String.split(&1), fn str -> String.to_integer(str) end)
-      )
-
-    columns = transpose(rows)
-
-    %Matrix{
-      columns: columns,
-      rows: rows
+  def from_string(input),
+    do: %Matrix{
+      rows:
+        Enum.map(
+          String.split(input, "\n"),
+          &Enum.map(String.split(&1), fn str -> String.to_integer(str) end)
+        )
     }
-  end
 
   @doc """
   Write the `matrix` out as a string, with rows separated by newlines and
@@ -50,7 +44,7 @@ defmodule Matrix do
   Given a `matrix`, return its columns as a list of lists of integers.
   """
   @spec columns(matrix :: %Matrix{}) :: list(list(integer))
-  def columns(matrix), do: matrix.columns
+  def columns(matrix), do: transpose(matrix.rows)
 
   @doc """
   Given a `matrix` and `index`, return the column at `index`.
