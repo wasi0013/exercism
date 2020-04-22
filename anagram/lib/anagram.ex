@@ -9,11 +9,6 @@ defmodule Anagram do
   end
 
   def anagram?(word, word), do: false
-  def anagram?(word, candidate), do: count_letters(word) == count_letters(candidate)
+  def anagram?(word, candidate), do: Enum.sort(String.graphemes(word)) == Enum.sort(String.graphemes(candidate))
 
-  def count_letters(word) do
-    word = word |> String.graphemes() 
-    Enum.map(word, &({&1, Enum.count(word, fn c -> c == &1 end)})) 
-    |> Map.new()
-  end 
 end
