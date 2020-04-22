@@ -38,33 +38,25 @@ defmodule Matrix do
   Given a `matrix`, return its rows as a list of lists of integers.
   """
   @spec rows(matrix :: %Matrix{}) :: list(list(integer))
-  def rows(matrix) do
-    matrix.rows
-  end
+  def rows(matrix), do: matrix.rows
 
   @doc """
   Given a `matrix` and `index`, return the row at `index`.
   """
   @spec row(matrix :: %Matrix{}, index :: integer) :: list(integer)
-  def row(matrix, index) do
-    Enum.at(rows(matrix), index)
-  end
+  def row(matrix, index), do: Enum.at(rows(matrix), index)
 
   @doc """
   Given a `matrix`, return its columns as a list of lists of integers.
   """
   @spec columns(matrix :: %Matrix{}) :: list(list(integer))
-  def columns(matrix) do
-    matrix.columns
-  end
+  def columns(matrix), do: matrix.columns
 
   @doc """
   Given a `matrix` and `index`, return the column at `index`.
   """
   @spec column(matrix :: %Matrix{}, index :: integer) :: list(integer)
-  def column(matrix, index) do
-    Enum.at(columns(matrix), index)
-  end
+  def column(matrix, index), do: Enum.at(columns(matrix), index)
 
   def transpose([[] | _]), do: []
   def transpose(list), do: [Enum.map(list, &hd/1) | transpose(Enum.map(list, &tl/1))]
