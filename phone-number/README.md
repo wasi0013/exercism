@@ -1,5 +1,10 @@
 # Phone Number
 
+Welcome to Phone Number on Exercism's Elixir Track.
+If you need help running the tests or submitting your code, check out `HELP.md`.
+
+## Instructions
+
 Clean up user-entered phone numbers so that they can be sent SMS messages.
 
 The **North American Numbering Plan (NANP)** is a telephone numbering system used by many countries in North America like the United States, Canada or Bermuda. All NANP-countries share the same international country code: `1`.
@@ -28,44 +33,38 @@ should all produce the output
 
 **Note:** As this exercise only deals with telephone numbers used in NANP-countries, only 1 is considered a valid country code.
 
-## Running tests
-
-Execute the tests with:
-
-```bash
-$ mix test
-```
-
-### Pending tests
-
-In the test suites, all but the first test have been skipped.
-
-Once you get a test passing, you can unskip the next one by
-commenting out the relevant `@tag :pending` with a `#` symbol.
-
-For example:
-
-```elixir
-# @tag :pending
-test "shouting" do
-  assert Bob.hey("WATCH OUT!") == "Whoa, chill out!"
-end
-```
-
-Or, you can enable all the tests by commenting out the
-`ExUnit.configure` line in the test suite.
-
-```elixir
-# ExUnit.configure exclude: :pending, trace: true
-```
-
-If you're stuck on something, it may help to look at some of
-the [available resources](https://exercism.io/tracks/elixir/resources)
-out there where answers might be found.
-
 ## Source
 
-Event Manager by JumpstartLab [http://tutorials.jumpstartlab.com/projects/eventmanager.html](http://tutorials.jumpstartlab.com/projects/eventmanager.html)
+### Created by
 
-## Submitting Incomplete Solutions
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
+- @rubysolo
+
+### Contributed to by
+
+- @andrewsardone
+- @angelikatyborska
+- @brianriley
+- @Cohen-Carlisle
+- @dalexj
+- @devonestes
+- @drueck
+- @fhdhsni
+- @henrik
+- @jinyeow
+- @johnsyweb
+- @korbin
+- @kytrinyx
+- @lancehalvorsen
+- @lpil
+- @martinsvalin
+- @neenjaw
+- @parkerl
+- @sotojuan
+- @Teapane
+- @v-kolesnikov
+- @victorlcampos
+- @waiting-for-dev
+
+### Based on
+
+Event Manager by JumpstartLab - http://tutorials.jumpstartlab.com/projects/eventmanager.html
